@@ -1,1 +1,92 @@
+/*
+ * Click `Run` to execute the snippet below!
+ */
 
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution 
+{
+  public static void main(String[] args) 
+  {
+    ArrayList<String> strings = new ArrayList<String>();
+    strings.add("Hello, World!");
+    strings.add("Welcome to CoderPad.");
+    strings.add("This pad is running Java " + Runtime.version().feature());
+
+    for (String string : strings) 
+    {
+      System.out.println(string);
+    }
+    int[] arr = {1,2,3,-3,4,5};
+    int[] arr2 = {1,2,3,-4,5};
+    int[] arr3 = {};
+    System.out.print("Does the array : ");
+    printArray(arr); 
+    System.out.println(" have distinct abs value? " + isDistinctAbsValue(arr));
+
+    System.out.print("Does the array : ");
+    printArray(arr3); 
+    System.out.println(" have distinct abs value? " + isDistinctAbsValue(arr3));
+
+    
+
+
+
+  } // end of main()
+
+  /*
+Given an input array of integer values (positive and negative), return `True` if the absolute value of each element is distinct. Return `False` otherwise.
+for eg: 3 and -3 both are equal
+intput{1,2,3,-3,4,5} //output = false;
+intput{1,2,3,-4,5} //output = true;
+
+0 - 0 
+Empty
+single element
+2 elements
+we have more than 1 duplicate
+
+TC: O(N) and SC: O(N)
+
+Plan: 
+1. Loop through given array
+2. We can add each element to the set if there is abs value for the number we are looping through
+3. Return false if above condition met 
+4. if not return true
+
+ */
+
+public static void printArray(int[] anArray)
+{
+  // for loop to iterate through the array, printing each int
+  for(int x = 0; x < anArray.length; x++)
+  {
+      System.out.print(anArray[x]);
+  }
+}
+
+ public static boolean isDistinctAbsValue(int[] arr)
+ {
+  HashSet<Integer> absValues = new HashSet<Integer>();
+  //boolean result = true;
+
+  for(int i : arr)
+  {
+      if(absValues.contains(Math.abs(i)))
+      {
+        return false;
+      }
+      absValues.add(Math.abs(i));
+  }
+  return true;
+
+ }
+} // end of Solution
